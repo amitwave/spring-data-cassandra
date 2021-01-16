@@ -22,6 +22,7 @@ public class Application implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
+
     final PersonKey key = new PersonKey("John", LocalDateTime.now(), UUID.randomUUID());
     final Person p = new Person(key, "Doe", 1000);
     personRepository.insert(p);
