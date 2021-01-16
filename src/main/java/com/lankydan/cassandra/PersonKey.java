@@ -1,6 +1,6 @@
 package com.lankydan.cassandra;
 
-import com.datastax.driver.core.DataType;
+
 import org.springframework.data.cassandra.core.mapping.PrimaryKeyClass;
 import org.springframework.data.cassandra.core.mapping.PrimaryKeyColumn;
 
