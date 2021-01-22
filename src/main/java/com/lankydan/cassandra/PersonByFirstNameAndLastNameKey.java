@@ -1,0 +1,69 @@
+package com.lankydan.cassandra;
+
+
+import org.springframework.data.cassandra.core.mapping.PrimaryKeyClass;
+import org.springframework.data.cassandra.core.mapping.PrimaryKeyColumn;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+import static org.springframework.data.cassandra.core.cql.Ordering.DESCENDING;
+import static org.springframework.data.cassandra.core.cql.PrimaryKeyType.PARTITIONED;
+
+@PrimaryKeyClass
+public class PersonByFirstNameAndLastNameKey implements Serializable {
+
+  @PrimaryKeyColumn(name = "first_name", type = PARTITIONED)
+  private String firstName;
+
+  @PrimaryKeyColumn(name = "last_name", type = PARTITIONED)
+  private String lastName;
+
+  @PrimaryKeyColumn(name = "date_of_birth", ordinal = 0)
+  private LocalDateTime dateOfBirth;
+
+  @PrimaryKeyColumn(name = "person_id", ordinal = 1, ordering = DESCENDING)
+  private UUID id;
+
+  public PersonByFirstNameAndLastNameKey(final String firstName, final String lastName, final LocalDateTime dateOfBirth, final UUID id) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.id = id;
+    this.dateOfBirth = dateOfBirth;
+  }
+
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
+
+  public String getLastName() {
+    return lastName;
+  }
+
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
+
+  public LocalDateTime getDateOfBirth() {
+    return dateOfBirth;
+  }
+
+  public void setDateOfBirth(LocalDateTime dateOfBirth) {
+    this.dateOfBirth = dateOfBirth;
+  }
+
+  public UUID getId() {
+    return id;
+  }
+
+  public void setId(UUID id) {
+    this.id = id;
+  }
+
+
+}
